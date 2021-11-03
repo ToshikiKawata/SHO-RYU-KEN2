@@ -9,11 +9,32 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var animation: UIImageView!
+    var imageArrayAttack : Array<UIImage> = []
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            while let attackImage = UIImage(named: "attak\(imageArrayAttack.count+1)") {
+                imageArrayAttack.append(attackImage)
+            }
+        }
+        
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+        }
+    
+  
+    @IBAction func push(_ sender: Any) {
+    // アニメーションの適用
+    animation.animationImages = imageArrayAttack
+    // 1.5秒間隔
+    animation.animationDuration = 0.8
+    // 1回繰り返し
+    animation.animationRepeatCount = 1
+    // アニメーションを開始
+    animation.startAnimating()
     }
-
-
 }
 
